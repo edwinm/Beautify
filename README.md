@@ -1,8 +1,8 @@
 Beatify is a PHP-function which combines four text tools into one function
 - Markdown: Simpeler and more readable than HTML
-- SmartyPants: Better typography (curly quotes, ellipsis...)
-- GeSHi: Adds syntax highlighting to code
-- dot: Converts Dot diagrams to SVG
+- SmartyPants: Adds better typography (curly quotes, ellipsis...)
+- GeSHi: Adds syntax highlighting to source code
+- Dot: Converts the Dot diagram language to SVG
 
 Caveat: SVG does not display in IE8 and older
 
