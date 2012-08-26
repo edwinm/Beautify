@@ -23,7 +23,8 @@ require_once "geshi/geshi.php";
 require_once "SmartyPants/smartypants-typographer.php";
 
 // Full path to dot (install graphviz to get dot)
-define('DOTPATH', '/opt/local/bin/dot');
+define('DOTPATH', '/usr/bin/dot');
+// define('DOTPATH', '/opt/local/bin/dot');
 // Capture dot error messages in file
 define('DOTERRLOGPATH', '/tmp/dot-errorlog.txt');
 
