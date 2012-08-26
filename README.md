@@ -6,6 +6,10 @@ Beatify is a PHP-function which combines four text tools into one function
 
 Copyright 2012 Edwin Martin <edwin@bitstorm.org>
 
-License: MIT and GPL
+License: MIT or GPL
 
 Caveat: SVG does not display in IE8 and older
+
+To clone Beautify:
+
+git clone https://github.com/edwinm/Beautify.git
