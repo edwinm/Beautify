@@ -31,6 +31,8 @@ require_once "SmartyPants/smartypants-typographer.php";
 define('DOTPATH', '/opt/local/bin/dot'); // Mac OS X
 // Capture dot error messages in file
 define('DOTERRLOGPATH', '/tmp/dot-errorlog.txt');
+// Output VML for IE8 and older?
+define('OUTPUTVML', true);
 
 /**
  * @param $s Input string
@@ -60,8 +62,20 @@ function beautify($s) {
                     fclose($pipes[1]);
                     proc_close($proc);
                     $svg = preg_replace("/.*<svg/s", "<svg", $svg); // Remove <?xml and <!doctype...
-                    $svg .= "<!--[if lte IE 8]><p>SVG is not supported by your browser.</p><![endif]-->\r\n";
-                    $result .= $svg;
+                    $svg = preg_replace("/id=\"(.*?)\"/s", "id=\"$1_$i\"", $svg); // Prevent duplicate id's
+                    if (OUTPUTVML) {
+                        $proc = proc_open(DOTPATH." -Tvml", $descriptorspec, $pipes);
+                        fwrite($pipes[0], $code);
+                        fclose($pipes[0]);
+                        $vml = stream_get_contents($pipes[1]);
+                        fclose($pipes[1]);
+                        proc_close($proc);
+                        $vml = preg_replace("/<!--.*?-->/s", "", $vml); // Remove comments in favor of conditional comments
+                    } else {
+                        $vml = "<p>SVG is not supported by your browser</p>";
+                    }
+                    $out = "$svg<!--[if lte IE 8]>$vml<![endif]-->\r\n";
+                    $result .= $out;
                 }
         } else {
             if (!$language) {
