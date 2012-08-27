@@ -7,6 +7,10 @@
  * - GeSHi: Adds syntax highlighting to code
  * - dot: Converts Dot diagrams to SVG
  *
+ * See http://www.bitstorm.org/weblog/2012-8/Beautify_Markdown_SmartyPants_GeSHi_and_Dot_combined.html
+ *
+ * Git: https://github.com/edwinm/Beautify
+ *
  * Copyright 2012 Edwin Martin <edwin@bitstorm.org>
  *
  * License: MIT and GPL
@@ -23,8 +27,8 @@ require_once "geshi/geshi.php";
 require_once "SmartyPants/smartypants-typographer.php";
 
 // Full path to dot (install graphviz to get dot)
-define('DOTPATH', '/usr/bin/dot');
-// define('DOTPATH', '/opt/local/bin/dot');
+define('DOTPATH', '/usr/bin/dot'); // Linux
+// define('DOTPATH', '/opt/local/bin/dot'); // Mac OS X
 // Capture dot error messages in file
 define('DOTERRLOGPATH', '/tmp/dot-errorlog.txt');
 
@@ -43,9 +47,9 @@ function beautify($s) {
         $language = $matches[3][$i][0];
         if ($language == "dot-view") {
                 $descriptorspec = array(
-                   0 => array("pipe", "r"),  // stdin is a pipe that the child will read from
-                   1 => array("pipe", "w"),  // stdout is a pipe that the child will write to
-                   2 => array("file", DOTERRLOGPATH, "w") // stderr is a file to write to
+                   0 => array("pipe", "r"),
+                   1 => array("pipe", "w"),
+                   2 => array("file", DOTERRLOGPATH, "w")
                 );
                 $proc = proc_open(DOTPATH." -Tsvg", $descriptorspec, $pipes);
                 if (is_resource($proc)) {
