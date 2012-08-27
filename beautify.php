@@ -30,7 +30,7 @@ define('DOTPATH', '/opt/local/bin/dot'); // Mac OS X
 // Capture dot error messages in file
 define('DOTERRLOGPATH', '/tmp/dot-errorlog.txt');
 // Output VML for IE8 and older?
-define('OUTPUTVML', true);
+define('OUTPUTVML', false); // true is not supported, who knows more?
 
 /**
  * @param $s Input string
