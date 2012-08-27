@@ -1,3 +1,5 @@
+#Beatify
+
 Beatify is a PHP-function which combines four text tools into one function
 - Markdown: Simpeler and more readable than HTML
 - SmartyPants: Adds better typography (curly quotes, ellipsis...)
