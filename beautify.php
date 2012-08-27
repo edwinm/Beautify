@@ -5,7 +5,7 @@
  * - Markdown: Simpeler and more readable than HTML
  * - SmartyPants: Better typography (curly quotes, ellipsis...)
  * - GeSHi: Adds syntax highlighting to code
- * - dot: Converts Dot diagrams to SVG
+ * - dot: Converts Dot diagrams to SVG and VML
  *
  * See http://www.bitstorm.org/weblog/2012-8/Beautify_Markdown_SmartyPants_GeSHi_and_Dot_combined.html
  *
@@ -14,8 +14,6 @@
  * Copyright 2012 Edwin Martin <edwin@bitstorm.org>
  *
  * License: MIT and GPL
- *
- * Caveat: SVG does not display in IE8 and older
  *
  */
 
