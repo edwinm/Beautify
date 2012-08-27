@@ -27,8 +27,8 @@ require_once "geshi/geshi.php";
 require_once "SmartyPants/smartypants-typographer.php";
 
 // Full path to dot (install graphviz to get dot)
-define('DOTPATH', '/usr/bin/dot'); // Linux
-// define('DOTPATH', '/opt/local/bin/dot'); // Mac OS X
+// define('DOTPATH', '/usr/bin/dot'); // Linux
+define('DOTPATH', '/opt/local/bin/dot'); // Mac OS X
 // Capture dot error messages in file
 define('DOTERRLOGPATH', '/tmp/dot-errorlog.txt');
 
@@ -46,6 +46,7 @@ function beautify($s) {
         $code = html_entity_decode(trim($matches[4][$i][0]));
         $language = $matches[3][$i][0];
         if ($language == "dot-view") {
+                $code = preg_replace("/{/s", "{\n\rgraph [bgcolor=transparent];", $code); // Remove background rectangle
                 $descriptorspec = array(
                    0 => array("pipe", "r"),
                    1 => array("pipe", "w"),
