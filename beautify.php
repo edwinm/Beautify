@@ -30,7 +30,7 @@ define('DOTPATH', '/opt/local/bin/dot'); // Mac OS X
 // Capture dot error messages in file
 define('DOTERRLOGPATH', '/tmp/dot-errorlog.txt');
 // Output VML for IE8 and older?
-define('OUTPUTVML', false); // true is not supported, who knows more?
+define('OUTPUTVML', false); // True for VML support for IE
 
 /**
  * @param $s Input string
@@ -39,7 +39,7 @@ define('OUTPUTVML', false); // true is not supported, who knows more?
 function beautify($s) {
     $offset = 0;
     $result = '';
-    $n = preg_match_all('|((\r\n~~~+)\s*([a-z0-9_-]*)\r\n)(.*?)\2\r\n|s', $s, $matches, PREG_OFFSET_CAPTURE);
+    $n = preg_match_all('|((\r?\n~~~+)\s*([a-z0-9_-]*)\r?\n)(.*?)\2\r?\n|s', $s, $matches, PREG_OFFSET_CAPTURE);
     for($i = 0; $i < $n; $i++) {
         $md = substr($s, $offset, $matches[4][$i][1] - $offset - strlen($matches[1][$i][0]));
         $result .= Markdown(SmartyPants($md));
@@ -72,7 +72,7 @@ function beautify($s) {
                     } else {
                         $vml = "<p>SVG is not supported by your browser</p>";
                     }
-                    $out = "$svg<!--[if lte IE 8]>$vml<![endif]-->\r\n";
+                    $out = "<div class=\"beautify-graph\"><!--[if gt IE 8]>-->$svg<!--<![endif]--><!--[if lte IE 8]>$vml<![endif]--></div>\r\n";
                     $result .= $out;
                 }
         } else {
