@@ -25,8 +25,8 @@ require_once "geshi/geshi.php";
 require_once "SmartyPants/smartypants-typographer.php";
 
 // Full path to dot (install graphviz to get dot)
-// define('DOTPATH', '/usr/bin/dot'); // Linux
-define('DOTPATH', '/opt/local/bin/dot'); // Mac OS X
+define('DOTPATH', '/usr/bin/dot'); // Linux
+// define('DOTPATH', '/opt/local/bin/dot'); // Mac OS X
 // Capture dot error messages in file
 define('DOTERRLOGPATH', '/tmp/dot-errorlog.txt');
 // Output VML for IE8 and older?
