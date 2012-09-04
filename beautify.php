@@ -15,6 +15,13 @@
  *
  * License: MIT and GPL
  *
+ * Install Graphvis to get Dot support.
+ */
+
+/*
+ * User config
+ *
+ * Change the paths below to the actual paths on your OS.
  */
 
 // Download latest version from http://michelf.ca/projects/php-markdown/
@@ -24,13 +31,25 @@ require_once "geshi/geshi.php";
 // Download latest version from http://daringfireball.net/projects/smartypants/
 require_once "SmartyPants/smartypants-typographer.php";
 
-// Full path to dot (install graphviz to get dot)
-define('DOTPATH', '/usr/bin/dot'); // Linux
-// define('DOTPATH', '/opt/local/bin/dot'); // Mac OS X
-// Capture dot error messages in file
-define('DOTERRLOGPATH', '/tmp/dot-errorlog.txt');
-// Output VML for IE8 and older?
-define('OUTPUTVML', false); // True for VML support for IE
+// Full path to dot program and error log
+if (substr(strtoupper(PHP_OS),0,3) == "WIN") { // Windows
+	define('DOTPATH', '"C:/Program Files/Graphviz 2.28/bin/dot.exe"');
+	define('DOTERRLOGPATH', 'C:/WINDOWS/Temp/dot-errlog.txt');
+} else if (PHP_OS == "Darwin") { // Mac OS X
+	define('DOTPATH', '/opt/local/bin/dot');
+	define('DOTERRLOGPATH', '/tmp/dot-errorlog.txt');
+} else { // Assume Linux or other UNIX-like OS
+	define('DOTPATH', '/usr/bin/dot');
+	define('DOTERRLOGPATH', '/tmp/dot-errorlog.txt');
+}
+
+/*
+ *  Output VML for IE8 and older so they can see graphs?
+ * 	false: for IE8 and older, an error message is shown
+ *  true:  for IE8 and older, VML is generated
+ */
+define('OUTPUTVML', false);
+
 
 /**
  * @param $s Input string
@@ -39,6 +58,7 @@ define('OUTPUTVML', false); // True for VML support for IE
 function beautify($s) {
     $offset = 0;
     $result = '';
+	// Split input in code and text parts
     $n = preg_match_all('|((\r?\n~~~+)\s*([a-z0-9_-]*)\r?\n)(.*?)\2\r?\n|s', $s, $matches, PREG_OFFSET_CAPTURE);
     for($i = 0; $i < $n; $i++) {
         $md = substr($s, $offset, $matches[4][$i][1] - $offset - strlen($matches[1][$i][0]));
@@ -92,3 +112,4 @@ function beautify($s) {
     return $result;
 }
 ?>
+

@@ -1,6 +1,6 @@
-#Beatify
+#Beautify
 
-Beatify is a PHP-function which combines four powerful text tools into one function
+Beautify is a PHP-function which combines four powerful text tools into one function
 
 - Markdown: Simpler and more readable than HTML
 - SmartyPants: Adds better typography ("curly quotes", ellipsis...)
@@ -16,12 +16,24 @@ License: MIT or GPL
 Example of syntax highlighting with GeSHi:
 
 ~~~ javascript
-var promise = $.ajax({
-  url: "/myServerScript"
-});
+$('#result').html('waiting...');
 
-promise.done(mySuccessFunction);
-promise.fail(myErrorFunction);
+var promise = wait();
+promise.done(result);
+
+function result() {
+  $('#result').html('done');
+}
+
+function wait() {
+  var deferred = $.Deferred();
+
+  setTimeout(function() {
+    deferred.resolve();
+  }, 2000);
+
+  return deferred.promise();
+}
 ~~~
 
 Example of Dot:
@@ -35,4 +47,6 @@ digraph G {
 
 To get Beautify:
 
+~~~ bash
 git clone https://github.com/edwinm/Beautify.git
+~~~
