@@ -14,13 +14,18 @@ To get the Dot functionality, you first have to install Dot.
 ### Install Dot for Windows
 
 Go to the [Graphviz download page](http://www.graphviz.org/Download_windows.php) and download and install Graphviz.
-Find out the location of the Dot program.
 
 ### Install Dot for Mac or Linux
 
 Use your package manager to install the graphviz package.
 
-Use `which dot` to find the location of the dot program.
+For example, when using MacPorts:
+
+`sudo port install graphviz`
+
+Or when using apt-get with Debian or Ubuntu:
+
+`sudo apt-get install graphviz`
 
 ## Configuring VML support
 
@@ -31,5 +36,5 @@ Open beautify.php and find this line:
 Leave it at false to show an error message in IE8 and older.
 
 Change it to true to output VML. This only works when normal HTML standards mode is
-turned off.
+turned off. For more information about this, read [KB932175](http://support.microsoft.com/kb/932175).
 
