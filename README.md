@@ -18,4 +18,4 @@ License: MIT or GPL
 
 To get Beautify:
 
-git clone https://github.com/edwinm/Beautify.git
+`git clone https://github.com/edwinm/Beautify.git`
