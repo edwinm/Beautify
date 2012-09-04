@@ -13,7 +13,9 @@ Copyright 2012 Edwin Martin <edwin@bitstorm.org>
 
 License: MIT or GPL
 
-Example of syntax highlighting with GeSHi:
+## Examples
+
+### Syntax highlighting with GeSHi:
 
 ~~~ javascript
 $('#result').html('waiting...');
@@ -36,7 +38,7 @@ function wait() {
 }
 ~~~
 
-Example of Dot:
+### Graph made with Dot:
 
 ~~~ dot-view
 digraph G {
@@ -45,8 +47,9 @@ digraph G {
 }
 ~~~
 
-To get Beautify:
+## Get Beautify:
 
 ~~~ bash
 git clone https://github.com/edwinm/Beautify.git
 ~~~
+
