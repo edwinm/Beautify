@@ -1,6 +1,6 @@
-#Beatify
+#Beautify
 
-Beatify is a PHP-function which combines four text tools into one function
+Beautify is a PHP-function which combines four text tools into one function
 - Markdown: Simpler and more readable than HTML
 - SmartyPants: Adds better typography (curly quotes, ellipsis...)
 - GeSHi: Adds syntax highlighting to source code
