@@ -5,11 +5,11 @@ on a PHP-enabled website.
 
 `git clone https://github.com/edwinm/Beautify.git`
 
-You are encouraged to update the libraries to the latest versions.
+You are encouraged to update Markdown, SmartyPants and GeSHi to the latest versions.
 
-## Dot
+## Installing Dot
 
-To get the Dot functionality, you first have to install Dot.
+To be able to draw graphs, you first have to install Dot.
 
 ### Install Dot for Windows
 
@@ -29,12 +29,14 @@ Or when using apt-get with Debian or Ubuntu:
 
 ## Configuring VML support
 
+To see graphs in IE8 and older, you need VML.
+
 Open beautify.php and find this line:
 
 `define('OUTPUTVML', false);`
 
-Leave it at false to show an error message in IE8 and older.
-
 Change it to true to output VML. This only works when normal HTML standards mode is
 turned off. For more information about this, read [KB932175](http://support.microsoft.com/kb/932175).
 
+Leave it at false to show an error message in IE8 and older. You can use this if VML
+does not work on your webpage.
