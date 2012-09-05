@@ -29,7 +29,7 @@ Or when using apt-get with Debian or Ubuntu:
 
 ## Configuring VML support
 
-To see graphs in IE8 and older, you need VML.
+All modern browsers can show graphs. To see graphs in IE8 and older, you need VML.
 
 Open beautify.php and find this line:
 
