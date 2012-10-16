@@ -23,7 +23,6 @@
  *
  * Change the paths below to the actual paths on your OS.
  */
-
 // Download latest version from http://michelf.ca/projects/php-markdown/
 require_once "PHP-Markdown-Extra-1.2.5/markdown.php";
 // Download latest version from http://sourceforge.net/projects/geshi/files/
@@ -51,8 +50,10 @@ if (substr(strtoupper(PHP_OS),0,3) == "WIN") { // Windows
 define('OUTPUTVML', false);
 
 
+
+
 /**
- * @param $s Input string
+ * @param $s string Input string
  * @return string HTML string
  */
 function beautify($s) {
@@ -107,9 +108,10 @@ function beautify($s) {
         }
         $offset = $matches[4][$i][1] + strlen($matches[4][$i][0]) + strlen($matches[2][$i][0]);
     }
-    $result .= Markdown(SmartyPants(substr($s, $offset)));
+    $result .= SmartyPants(Markdown(substr($s, $offset)));
 
     return $result;
 }
-?>
+
+
 
