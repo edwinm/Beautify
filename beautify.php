@@ -32,7 +32,7 @@ require_once "SmartyPants/smartypants-typographer.php";
 
 // Full path to dot program and error log
 if (substr(strtoupper(PHP_OS),0,3) == "WIN") { // Windows
-	define('DOTPATH', '"C:/Program Files/Graphviz 2.28/bin/dot.exe"');
+	define('DOTPATH', '"C:/Program Files (x86)/Graphviz 2.28/bin/dot.exe"');
 	define('DOTERRLOGPATH', 'C:/WINDOWS/Temp/dot-errlog.txt');
 } else if (PHP_OS == "Darwin") { // Mac OS X
 	define('DOTPATH', '/opt/local/bin/dot');
@@ -63,7 +63,7 @@ function beautify($s) {
     $n = preg_match_all('|((\r?\n~~~+)\s*([a-z0-9_-]*)\r?\n)(.*?)\2\r?\n|s', $s, $matches, PREG_OFFSET_CAPTURE);
     for($i = 0; $i < $n; $i++) {
         $md = substr($s, $offset, $matches[4][$i][1] - $offset - strlen($matches[1][$i][0]));
-        $result .= Markdown(SmartyPants($md));
+        $result .= SmartyPants(Markdown($md));
         $code = html_entity_decode(trim($matches[4][$i][0]));
         $language = $matches[3][$i][0];
         if ($language == "dot-view") {
