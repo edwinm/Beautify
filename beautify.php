@@ -18,28 +18,16 @@
  * Install Graphvis to get Dot support.
  */
 
-/*
- * User config
- *
- * Change the paths below to the actual paths on your OS.
- */
-// Download latest version from http://michelf.ca/projects/php-markdown/
-//require_once "PHP-Markdown-Extra-1.2.5/markdown.php";
-// Download latest version from http://sourceforge.net/projects/geshi/files/
-//require_once "geshi/geshi.php";
-// Download latest version from http://daringfireball.net/projects/smartypants/
-//require_once "SmartyPants/smartypants-typographer.php";
-
 // Full path to dot program and error log
 if (substr(strtoupper(PHP_OS),0,3) == "WIN") { // Windows
-	define('DOTPATH', '"C:/Program Files (x86)/Graphviz 2.28/bin/dot.exe"');
-	define('DOTERRLOGPATH', 'C:/WINDOWS/Temp/dot-errlog.txt');
+	defined('DOTPATH') || define('DOTPATH', '"C:/Program Files (x86)/Graphviz 2.28/bin/dot.exe"');
+	defined('DOTERRLOGPATH') || define('DOTERRLOGPATH', 'C:/WINDOWS/Temp/dot-errlog.txt');
 } else if (PHP_OS == "Darwin") { // Mac OS X
-	define('DOTPATH', '/opt/local/bin/dot');
-	define('DOTERRLOGPATH', '/tmp/dot-errorlog.txt');
+	defined('DOTPATH') || define('DOTPATH', '/opt/local/bin/dot');
+	defined('DOTERRLOGPATH') || define('DOTERRLOGPATH', '/tmp/dot-errorlog.txt');
 } else { // Assume Linux or other UNIX-like OS
-	define('DOTPATH', '/usr/bin/dot');
-	define('DOTERRLOGPATH', '/tmp/dot-errorlog.txt');
+	defined('DOTPATH') || define('DOTPATH', '/usr/bin/dot');
+	defined('DOTERRLOGPATH') || define('DOTERRLOGPATH', '/tmp/dot-errorlog.txt');
 }
 
 /*
@@ -47,7 +35,7 @@ if (substr(strtoupper(PHP_OS),0,3) == "WIN") { // Windows
  * 	false: for IE8 and older, an error message is shown
  *  true:  for IE8 and older, VML is generated
  */
-define('OUTPUTVML', false);
+defined('OUTPUTVML') || define('OUTPUTVML', false);
 
 use \Michelf\Markdown;
 
