@@ -24,11 +24,11 @@
  * Change the paths below to the actual paths on your OS.
  */
 // Download latest version from http://michelf.ca/projects/php-markdown/
-require_once "PHP-Markdown-Extra-1.2.5/markdown.php";
+//require_once "PHP-Markdown-Extra-1.2.5/markdown.php";
 // Download latest version from http://sourceforge.net/projects/geshi/files/
-require_once "geshi/geshi.php";
+//require_once "geshi/geshi.php";
 // Download latest version from http://daringfireball.net/projects/smartypants/
-require_once "SmartyPants/smartypants-typographer.php";
+//require_once "SmartyPants/smartypants-typographer.php";
 
 // Full path to dot program and error log
 if (substr(strtoupper(PHP_OS),0,3) == "WIN") { // Windows
@@ -49,8 +49,7 @@ if (substr(strtoupper(PHP_OS),0,3) == "WIN") { // Windows
  */
 define('OUTPUTVML', false);
 
-
-
+use \Michelf\Markdown;
 
 /**
  * @param $s string Input string
@@ -63,7 +62,7 @@ function beautify($s) {
     $n = preg_match_all('|((\r?\n~~~+)\s*([a-z0-9_-]*)\r?\n)(.*?)\2\r?\n|s', $s, $matches, PREG_OFFSET_CAPTURE);
     for($i = 0; $i < $n; $i++) {
         $md = substr($s, $offset, $matches[4][$i][1] - $offset - strlen($matches[1][$i][0]));
-        $result .= SmartyPants(Markdown($md));
+        $result .= SmartyPants(Markdown::defaultTransform($md));
         $code = html_entity_decode(trim($matches[4][$i][0]));
         $language = $matches[3][$i][0];
         if ($language == "dot-view") {
@@ -108,7 +107,7 @@ function beautify($s) {
         }
         $offset = $matches[4][$i][1] + strlen($matches[4][$i][0]) + strlen($matches[2][$i][0]);
     }
-    $result .= SmartyPants(Markdown(substr($s, $offset)));
+    $result .= SmartyPants(Markdown::defaultTransform(substr($s, $offset)));
 
     return $result;
 }
