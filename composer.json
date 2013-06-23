@@ -1,5 +1,5 @@
 {
-    "name": "cepa/Beautify",
+    "name": "edwinm/Beautify",
     "description": "Fork of edwinm/Beautify",
     "type": "library",
     "homepage": "https://github.com/cepa/Beautify",
@@ -7,10 +7,6 @@
         {
             "name": "Edwin Martin",
             "homepage": "http://www.bitstorm.org/"
-        },
-        {
-            "name": "Lukasz Cepowski",
-            "homepage": "http://lukasz.cepowski.com"
         }
     ],
     "require": {
