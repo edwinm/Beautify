@@ -1,0 +1,21 @@
+{
+    "name": "cepa/Beautify",
+    "description": "Fork of edwinm/Beautify",
+    "type": "library",
+    "homepage": "https://github.com/cepa/Beautify",
+    "authors": [
+        {
+            "name": "Edwin Martin",
+            "homepage": "http://www.bitstorm.org/"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "easybook/geshi": "1.0.8.11",
+        "michelf/php-markdown": "1.3.*@dev",
+        "michelf/php-smartypants": "dev-lib"
+    },
+    "autoload": {
+        "files": ["./beautify.php"]
+    }
+}
